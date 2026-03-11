@@ -7,12 +7,14 @@ import { Property } from "@/lib/types";
 type RawProperty = Omit<Property, "id">;
 
 type PageProps = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-export default function PropertyDetailPage({ params }: PageProps) {
+export default async function PropertyDetailPage({ params }: PageProps) {
+  const { id } = await params;
+
   const typedProperties: Property[] = (properties as RawProperty[]).map(
     (property, index) => ({
       ...property,
@@ -20,9 +22,7 @@ export default function PropertyDetailPage({ params }: PageProps) {
     })
   );
 
-  const property = typedProperties.find(
-    (item) => item.id === Number(params.id)
-  );
+  const property = typedProperties.find((item) => item.id === Number(id));
 
   if (!property) {
     notFound();
