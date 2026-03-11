@@ -29,12 +29,22 @@ export default async function PropertyDetailPage({ params }: PageProps) {
   }
 
   return (
-    <main className="container">
-      <Link href="/" className="back-link">
-        ← Back to properties
-      </Link>
+    <main className="page-shell">
+      <div className="container">
+        <header className="topbar">
+          <div className="brand">
+            <span className="brand-badge">Property Details</span>
+            <h2>EstateHub</h2>
+            <p>Detailed listing overview</p>
+          </div>
+        </header>
 
-      <PropertyDetail property={property} />
+        <Link href="/" className="back-link">
+          ← Back to properties
+        </Link>
+
+        <PropertyDetail property={property} />
+      </div>
     </main>
   );
 }
