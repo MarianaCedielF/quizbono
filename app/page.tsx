@@ -1,5 +1,5 @@
 import properties from "@/data/properties.json";
-import PropertyCard from "@/components/PropertyCard";
+import PropertyCard from "@/components/propertyCard";
 import { Property } from "@/lib/types";
 
 export default function HomePage() {
